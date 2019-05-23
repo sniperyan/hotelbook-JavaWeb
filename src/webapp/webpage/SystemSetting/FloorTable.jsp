@@ -3,7 +3,7 @@
 
 	<head>
 		<meta charset="utf-8">
-		<title>酒店管理系统</title>
+		<title>Hotel Management System</title>
 		<link rel="stylesheet" href="../../js/layui/css/layui.css" media="all">
 		<link rel="stylesheet" href="../../MAIN/component/font-awesome-4.7.0/css/font-awesome.min.css">
 		<script src="../../js/layui/layui.js"></script>
@@ -35,16 +35,16 @@
 						<div class="layui-input-inline">
 							<input class="layui-input" id="inputSearch" placeholder="楼层名称">
 						</div>
-						<button class="layui-btn fa fa-search" id="searchButton"> 搜索</button>
+						<button class="layui-btn fa fa-search" id="searchButton"> search</button>
 					</div>
 					<div class="layui-inline">
-						<button class="layui-btn fa fa-refresh" id="refreshButton"> 刷新</button>
+						<button class="layui-btn fa fa-refresh" id="refreshButton"> refresh</button>
 					</div>
 					<div class="layui-inline">
-						<button class="layui-btn fa fa-pencil-square-o " id="insertButton"> 新增</button>
+						<button class="layui-btn fa fa-pencil-square-o " id="insertButton"> add</button>
 					</div>
 					<div class="layui-inline">
-						<button class="layui-btn fa fa-save" id="toXlsButton"> 导出</button>
+						<button class="layui-btn fa fa-save" id="toXlsButton"> export</button>
 					</div>
 				</div>
 			</legend>
@@ -53,9 +53,9 @@
 			<table id="tableID"></table>
 		</div>
 		<script type="text/html" id="barAuth">
-			<a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="detail">查看</a>
-			<a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
-			<a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+			<a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="detail">view</a>
+			<a class="layui-btn layui-btn-xs" lay-event="edit">edit</a>
+			<a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">delete</a>
 		</script>
 		<script>
 			/**
@@ -86,10 +86,10 @@
 								fixed: true
 							}, {
 								field: 'floorName',
-								title: '楼层名称'
+								title: 'floorName'
 							}, {
 								field: 'right',
-								title: '管理',
+								title: 'right',
 								align: 'center',
 								toolbar: '#barAuth',
 								width: 200
@@ -112,17 +112,17 @@
 						var floorName = data.floorName;
 
 						if(layEvent === 'detail') { //查看功能
-							layer.alert('ID：' + floorId + '<br>楼层名称：' + floorName, {
+							layer.alert('ID：' + floorId + '<br>floorName' + floorName, {
 								skin: 'layui-layer-lan',
 								closeBtn: 0,
-								title: '您当前选择的楼层值信息',
+								title: 'floorName',
 								anim: 4,
 								offset: '180px'
 							});
 						} else if(layEvent === 'del') {
-							layer.confirm('您确定要删除该条数据吗？', {
+							layer.confirm('confirm delete？', {
 								offset: '180px',
-								btn: ['是滴', '手滑']
+								btn: ['YES', 'NO']
 							}, function() {
 								table.reload('tableID', {
 									where: {
@@ -130,18 +130,18 @@
 										floorId: floorId
 									}
 								});
-								layer.msg('删除结果如下', {
+								layer.msg('delete result', {
 									offset: '250px',
 									icon: 1
 								});
 							}, function() {
-								layer.msg('删除操作已取消', {
+								layer.msg('delete cancel', {
 									offset: '250px'
 								});
 							});
 						} else if(layEvent === 'edit') {
 							layer.prompt({
-								title: '请输入楼层名称',
+								title: 'floorName',
 								formType: 0,
 								value: floorName,
 								offset: '220px',
@@ -158,12 +158,12 @@
 												floorName: value
 											}
 										});
-										layer.msg('修改结果如下', {
+										layer.msg('change result', {
 											offset: '250px'
 										});
 									} else {
-										layer.alert('该楼层名称已经存在！', {
-											title: '警告',
+										layer.alert('The floor name already exists！', {
+											title: 'warning',
 											icon: 4,
 											anim: 6,
 											offset: '220px'
@@ -178,11 +178,11 @@
 					$('#searchButton').click(function() {
 						var inputTxt = $('#inputSearch').val();
 						if(inputTxt === "")
-							layer.msg('您必须输入值', {
+							layer.msg('must input', {
 								offset: '250px'
 							});
 						else if(inputTxt.length > 10)
-							layer.msg('您所输入的值长度不合法', {
+							layer.msg('illegal length', {
 								offset: '250px'
 							});
 						else {
@@ -192,7 +192,7 @@
 									floorName: inputTxt
 								}
 							});
-							layer.msg('搜索结果', {
+							layer.msg('search result', {
 								offset: '250px'
 							});
 						}
@@ -211,7 +211,7 @@
 					//新增
 					$('#insertButton').click(function() {
 						layer.prompt({
-							title: '请输入楼层名称',
+							title: 'please input floor name',
 							formType: 0,
 							offset: '220px',
 							maxlength: 10
@@ -226,7 +226,7 @@
 											floorName: inputValue
 										}
 									});
-									layer.msg('新增楼层成功', {
+									layer.msg('add floor success', {
 										offset: '250px'
 									});
 									tableIns.reload({
@@ -235,8 +235,8 @@
 										}
 									});
 								} else {
-									layer.alert('该楼层名称已经存在！', {
-										title: '警告',
+									layer.alert('The floor name already exists！', {
+										title: 'warning',
 										icon: 4,
 										anim: 6,
 										offset: '220px'
@@ -249,8 +249,8 @@
 					//导出
 					$('#toXlsButton').click(function() {
 						location.href = baseUrl + '/FloorInfoExcelServlet';
-						layer.alert('Excel文件生成完成！', {
-							title: '成功',
+						layer.alert('Excel file generation is complete！', {
+							title: 'success',
 							icon: 6,
 							anim: 1,
 							offset: '250px'

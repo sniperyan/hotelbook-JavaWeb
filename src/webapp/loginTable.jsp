@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>酒店管理系统</title>
+    <title>Hotel Management System</title>
     <link rel="stylesheet" href="./js/layui/css/layui.css" media="all">
     <link rel="stylesheet" href="./MAIN/component/font-awesome-4.7.0/css/font-awesome.min.css">
     <script src="./js/layui/layui.js"></script>
@@ -30,21 +30,21 @@
     <legend>
         <div>
             <div class="layui-inline">
-                <button class="layui-btn layui-btn-primary fa fa-pencil-square-o " id="insertButton"> 新增</button>
+                <button class="layui-btn layui-btn-primary fa fa-pencil-square-o " id="insertButton"> add</button>
             </div>
             <div class="layui-inline">
-                <button class="layui-btn layui-btn-primary fa  fa-cloud-download" id="toXlsButton"> 导出</button>
+                <button class="layui-btn layui-btn-primary fa  fa-cloud-download" id="toXlsButton"> export</button>
             </div>
             <div class="layui-inline">
-                <button type="button" class="layui-btn layui-btn-primary fa fa-cloud-upload" id="upload"> 导入</button>
+                <button type="button" class="layui-btn layui-btn-primary fa fa-cloud-upload" id="upload"> import</button>
             </div>
         </div>
     </legend>
 </fieldset>
 <table id="tableID"></table>
 <script type="text/html" id="barAuth">
-    <a class="layui-btn layui-btn-xs" lay-event="edit">改密</a>
-    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+    <a class="layui-btn layui-btn-xs" lay-event="edit">change password</a>
+    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">delete</a>
 </script>
 <script>
 
@@ -61,7 +61,7 @@
                 ,accept: 'file' //普通文件
                 ,exts: 'xlsx' //只允许上传excel文件
                 ,before: function(){
-                    layer.msg('文件上传中');
+                    layer.msg('uploading');
                 }
                 ,success: function(res){
                     alert(res.msg);
@@ -76,19 +76,19 @@
                 cols: [
                     [{
                         field: 'loginId',
-                        title: '用户ID',
+                        title: 'loginId',
                         width: 100,
                         sort: true,
                         fixed: true
                     }, {
                         field: 'loginName',
-                        title: '用户登录名'
+                        title: 'loginName'
                     }, {
                         field: 'loginNickName',
-                        title: '用户昵称'
+                        title: 'loginNickName'
                     }, {
                         field: 'right',
-                        title: '管理',
+                        title: 'admin',
                         align: 'center',
                         toolbar: '#barAuth',
                         width: 150
@@ -112,9 +112,9 @@
                 var loginNameNow = getCookie("loginName");
                 if (layEvent === 'del') {
                     if (loginName != loginNameNow) {
-                        layer.confirm('您确定要删除该条数据吗？', {
+                        layer.confirm('Are you sure you want to delete this data？', {
                             offset: '180px',
-                            btn: ['是滴', '手滑']
+                            btn: ['Yes', 'No']
                         }, function () {
                             table.reload('tableID', {
                                 where: {
@@ -122,23 +122,23 @@
                                     loginId: loginId
                                 }
                             });
-                            layer.msg('删除结果如下', {
+                            layer.msg('Delete Result', {
                                 offset: '250px',
                                 icon: 1
                             });
                         }, function () {
-                            layer.msg('删除操作已取消', {
+                            layer.msg('Delete operation canceled', {
                                 offset: '250px'
                             });
                         });
                     } else {
-                        layer.msg('当前登陆账号禁止删除', {
+                        layer.msg('The current login account is forbidden to delete', {
                             offset: '250px'
                         });
                     }
                 } else if (layEvent === 'edit') {
                     layer.prompt({
-                        title: '请输入旧密码',
+                        title: 'please input old password',
                         formType: 1,
                         offset: '220px',
                         maxlength: 18
@@ -147,22 +147,22 @@
                         $.post(baseUrl + '/QueryLoginNameServlet', params, function updateCheck(data) {
                             layer.close(index);
                             if (data === "0") {
-                                layer.alert('密码不正确！', {
-                                    title: '警告',
+                                layer.alert('password error！', {
+                                    title: 'warning',
                                     icon: 2,
                                     anim: 6,
                                     offset: '220px'
                                 });
                             } else {
                                 layer.prompt({
-                                    title: '请输入新密码',
+                                    title: 'please input new password',
                                     formType: 1,
                                     offset: '220px',
                                     maxlength: 18
                                 }, function (value1, index1) {
                                     var pwd1 = value1;
                                     layer.prompt({
-                                        title: '请再次输入新密码',
+                                        title: 'please input new password again',
                                         formType: 1,
                                         offset: '220px',
                                         maxlength: 18
@@ -170,8 +170,8 @@
                                         var pwd2 = value2;
                                         if (pwd2 != pwd1) {
                                             layer.close(index2);
-                                            layer.alert('两次输入的值不一致！', {
-                                                title: '警告',
+                                            layer.alert('inconsistent password！', {
+                                                title: 'warning',
                                                 icon: 2,
                                                 anim: 6,
                                                 offset: '220px'
@@ -182,15 +182,15 @@
                                             params = "loginName=" + loginName + "&loginPwd=" + value2;
                                             $.post(baseUrl + '/UpdatePwdServlet', params, function updateCheck(data) {
                                                 if (data === '1') {
-                                                    layer.alert('修改成功！', {
-                                                        title: '成功',
+                                                    layer.alert('change success！', {
+                                                        title: 'success',
                                                         icon: 6,
                                                         anim: 1,
                                                         offset: '220px'
                                                     });
                                                 } else {
-                                                    layer.alert('修改失败！', {
-                                                        title: '失败',
+                                                    layer.alert('change failed!', {
+                                                        title: 'failed',
                                                         icon: 2,
                                                         anim: 6,
                                                         offset: '220px'
@@ -211,8 +211,8 @@
             //新增
             $('#insertButton').click(function () {
                 layer.open({
-                    title: "新增",
-                    btn: ['关闭'],
+                    title: "add",
+                    btn: ['cancel'],
                     yes: function (index) {
                         tableIns.reload({
                             where: {
@@ -240,8 +240,8 @@
             //导出
             $('#toXlsButton').click(function () {
                 location.href = baseUrl + '/LoginExcelServlet';
-                layer.alert('Excel文件生成完成！', {
-                    title: '成功',
+                layer.alert('Excel file generation is complete！', {
+                    title: 'success',
                     icon: 6,
                     anim: 1,
                     offset: '250px'

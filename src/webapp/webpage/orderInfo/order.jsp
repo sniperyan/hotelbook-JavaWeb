@@ -3,7 +3,7 @@
 
 	<head>
 		<meta charset="utf-8">
-		<title>预定单</title>
+		<title>Booking form</title>
 		<link rel="stylesheet" href="../../js/layui/css/layui.css" media="all">
 		<script src="../../js/layui/layui.js"></script>
 		<script src="../../js/jquery.js"></script>
@@ -14,61 +14,61 @@
 
 	<body>
 		<fieldset class="layui-elem-field layui-field-title " style="margin-top: 20px;">
-			<legend>酒店管理 - 预订单</legend>
+			<legend>Hotel management - Booking form</legend>
 		</fieldset>
 
 		<form class="layui-form">
 
 			<div class="layui-form-item">
 				<div class="layui-inline">
-					<label class="layui-form-label">预定单号</label>
+					<label class="layui-form-label">BookID</label>
 					<div class="layui-input-block">
 						<input type="text" id="orderId" class="layui-input" readonly>
 					</div>
 				</div>
 				<div class="layui-inline">
-					<label class="layui-form-label">预定人</label>
+					<label class="layui-form-label">Book Person</label>
 					<div class="layui-input-inline">
-						<input type="text" id="orderName" lay-verify="required" autocomplete="off" placeholder="预定人姓名" class="layui-input">
+						<input type="text" id="orderName" lay-verify="required" autocomplete="off" placeholder="orderName" class="layui-input">
 					</div>
 				</div>
 				<div class="layui-inline">
-					<label class="layui-form-label">预定电话</label>
+					<label class="layui-form-label">Book Tel</label>
 					<div class="layui-input-inline">
-						<input type="tel" id="orderPhone" lay-verify="phone" autocomplete="off" placeholder="预定人电话" class="layui-input">
+						<input type="tel" id="orderPhone" lay-verify="phone" autocomplete="off" placeholder="orderPhone" class="layui-input">
 					</div>
 				</div>
 			</div>
 
 			<div class="layui-form-item">
-				<label class="layui-form-label">身份证</label>
+				<label class="layui-form-label">ID</label>
 				<div class="layui-input-block">
-					<input type="text" id="orderIDcard" lay-verify="required|identity" placeholder="公民身份证号" autocomplete="off" class="layui-input">
+					<input type="text" id="orderIDcard" lay-verify="required|identity" placeholder="orderIDcard" autocomplete="off" class="layui-input">
 				</div>
 			</div>
 
 			<div class="layui-form-item">
 
 				<div class="layui-inline">
-					<label class="layui-form-label">入住时长</label>
+					<label class="layui-form-label">orderAllTime</label>
 					<div class="layui-input-inline">
-						<input type="text" class="layui-input" lay-verify="required" id="orderAllTime" placeholder="抵店时间 - 离店时间" readonly>
+						<input type="text" class="layui-input" lay-verify="required" id="orderAllTime" placeholder="Arrival time - Leaving time" readonly>
 					</div>
 				</div>
 
 				<div class="layui-inline">
-					<label class="layui-form-label">入住人数</label>
+					<label class="layui-form-label">Living population</label>
 					<div class="layui-input-inline">
-						<input type="text" id="checkNum" lay-verify="number" autocomplete="off" placeholder="实际入住人数" class="layui-input">
+						<input type="text" id="checkNum" lay-verify="number" autocomplete="off" placeholder="Living population" class="layui-input">
 					</div>
 				</div>
 
 				<div class="layui-inline">
-					<label class="layui-form-label">房间类型</label>
+					<label class="layui-form-label">Room type</label>
 					<div class="layui-input-inline">
-						<input type="text" id="typeId" lay-verify="required" autocomplete="off" placeholder="房间类型" class="layui-input" readonly>
+						<input type="text" id="typeId" lay-verify="required" autocomplete="off" placeholder="Room type" class="layui-input" readonly>
 					</div>
-					<button type="button" class="layui-btn layui-btn-primary" id="buttonTypeId"><i class="layui-icon">&#xe654;</i> 选择</button>
+					<button type="button" class="layui-btn layui-btn-primary" id="buttonTypeId"><i class="layui-icon">&#xe654;</i> select</button>
 				</div>
 
 			</div>
@@ -76,13 +76,13 @@
 			<div class="layui-form-item">
 
 				<div class="layui-inline">
-					<label class="layui-form-label">客房价格</label>
+					<label class="layui-form-label">Room price</label>
 					<div class="layui-input-inline">
 						<input type="text" id="price" lay-verify="number" autocomplete="off" placeholder="￥" class="layui-input">
 					</div>
 				</div>
 				<div class="layui-inline">
-					<label class="layui-form-label">入住价格</label>
+					<label class="layui-form-label">Check-in price</label>
 					<div class="layui-input-inline">
 						<input type="text" id="checkPrice" lay-verify="number" autocomplete="off" placeholder="￥" class="layui-input">
 					</div>
@@ -92,15 +92,15 @@
 
 			<div class="layui-form-item">
 				<div class="layui-inline">
-					<label class="layui-form-label">折扣</label>
+					<label class="layui-form-label">discount</label>
 					<div class="layui-input-inline">
-						<input type="text" id="discount" lay-verify="number" autocomplete="off" placeholder="折扣请输入，无折扣置空" class="layui-input">
+						<input type="text" id="discount" lay-verify="number" autocomplete="off" placeholder="discount" class="layui-input">
 					</div>
 				</div>
 				<div class="layui-inline">
-					<label class="layui-form-label">折扣原因</label>
+					<label class="layui-form-label">Reason for discount</label>
 					<div class="layui-input-inline">
-						<input type="text" id="discountReason" autocomplete="off" placeholder="请输入折扣原因" class="layui-input">
+						<input type="text" id="discountReason" autocomplete="off" placeholder="Reason for discount" class="layui-input">
 					</div>
 				</div>
 
@@ -108,15 +108,15 @@
 
 			<div class="layui-form-item">
 				<div class="layui-inline">
-					<label class="layui-form-label">是否加床</label>
+					<label class="layui-form-label">Whether an extra bed</label>
 					<div class="layui-input-inline">
-						<input type="radio" name="addBed" value="Y" title="是" lay-filter="addBedYes">
-						<input type="radio" name="addBed" value="N" title="否" lay-filter="addBedNo" checked="">
+						<input type="radio" name="addBed" value="Y" title="YES" lay-filter="addBedYes">
+						<input type="radio" name="addBed" value="N" title="NO" lay-filter="addBedNo" checked="">
 					</div>
 				</div>
 				<div class="layui-inline">
 					<div id="addBed" class="layui-inline layui-hide">
-						<label class="layui-form-label">加床价格</label>
+						<label class="layui-form-label">Extra bed price</label>
 						<div class="layui-input-inline">
 							<input type="text" id="addBedPrice" lay-verify="number" autocomplete="off" placeholder="￥" class="layui-input">
 						</div>
@@ -126,19 +126,19 @@
 
 			<div class="layui-form-item">
 				<div class="layui-inline">
-					<label class="layui-form-label">预收款</label>
+					<label class="layui-form-label">prepaid fee</label>
 					<div class="layui-input-inline">
 						<input type="text" id="orderMoney" lay-verify="required|number" autocomplete="off" placeholder="￥" class="layui-input">
 					</div>
 				</div>
 				<div class="layui-inline">
-					<label class="layui-form-label">单据状态</label>
+					<label class="layui-form-label">Document status</label>
 					<div class="layui-input-inline">
 						<select name="city" class="layui-input-inline" id="orderState">
-							<option value="预定">预定</option>
-							<option value="入住">入住</option>
-							<option value="结算">结算</option>
-							<option value="延期">延期</option>
+							<option value="Book">Book</option>
+							<option value="Check in">Check in</option>
+							<option value="Settlement">Settlement</option>
+							<option value="extension">extension</option>
 						</select>
 					</div>
 				</div>
@@ -146,15 +146,15 @@
 			</div>
 
 			<div class="layui-form-item layui-form-text">
-				<label class="layui-form-label">备注</label>
+				<label class="layui-form-label">Remarks</label>
 				<div class="layui-input-block">
-					<textarea id="remark" placeholder="请输入内容" class="layui-textarea"></textarea>
+					<textarea id="remark" placeholder="please input" class="layui-textarea"></textarea>
 				</div>
 			</div>
 			<div class="layui-form-item">
 				<div class="layui-input-block">
-					<button class="layui-btn" lay-submit lay-filter="insertRome">立即提交</button>
-					<button type="reset" class="layui-btn layui-btn-primary">重置</button>
+					<button class="layui-btn" lay-submit lay-filter="insertRome">submit</button>
+					<button type="reset" class="layui-btn layui-btn-primary">reset</button>
 				</div>
 			</div>
 		</form>
@@ -211,8 +211,8 @@
 				$('#buttonTypeId').on('click', function() {
 					layer.open({
 						type: 2,
-						title: '请选择房间类型',
-						btn: ['确定', '取消'],
+						title: 'Please select a room type',
+						btn: ['confirm', 'cancel'],
 						area: ['880px', '440px'],
 						fixed: form,
 						content: './selectRoomType.jsp',
@@ -272,24 +272,24 @@
 
 					$.post(baseUrl + '/InsertAndUpdateServlet', params, function(data) {
 						if(data === '1') {
-							layer.alert('预订单登记成功！', {
-								title: '新增成功',
+							layer.alert('The booking form was successfully registered!', {
+								title: 'success',
 								icon: 6,
 								shade: 0.6,
 								anim: 3,
 								offset: '220px'
 							});
 						} else if(data === '0') {
-							layer.alert('存在相同字段！', {
-								title: '新增失败',
+							layer.alert('The same field exists!', {
+								title: 'failed',
 								icon: 5,
 								shade: 0.6,
 								anim: 6,
 								offset: '220px'
 							});
 						} else {
-							layer.alert('预订单登记失败！', {
-								title: '新增失败',
+							layer.alert('Booking order failed!', {
+								title: 'failed',
 								icon: 2,
 								shade: 0.6,
 								anim: 6,

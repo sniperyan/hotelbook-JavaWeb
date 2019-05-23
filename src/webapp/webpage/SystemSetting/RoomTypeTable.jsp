@@ -3,7 +3,7 @@
 
 	<head>
 		<meta charset="utf-8">
-		<title>酒店管理系统</title>
+		<title>Hotel Management System</title>
 		<link rel="stylesheet" href="../../js/layui/css/layui.css" media="all">
 		<link rel="stylesheet" href="../../MAIN/component/font-awesome-4.7.0/css/font-awesome.min.css">
 		<script src="../../js/layui/layui.js"></script>
@@ -33,18 +33,18 @@
 				<div>
 					<div class="layui-inline">
 						<div class="layui-input-inline">
-							<input class="layui-input" id="inputSearch" placeholder="房间类型">
+							<input class="layui-input" id="inputSearch" placeholder="room type">
 						</div>
-						<button class="layui-btn fa fa-search" id="searchButton"> 搜索</button>
+						<button class="layui-btn fa fa-search" id="searchButton"> search</button>
 					</div>
 					<div class="layui-inline">
-						<button class="layui-btn fa fa-refresh" id="refreshButton"> 刷新</button>
+						<button class="layui-btn fa fa-refresh" id="refreshButton"> refresh</button>
 					</div>
 					<div class="layui-inline">
-						<button class="layui-btn fa fa-pencil-square-o " id="insertButton"> 新增</button>
+						<button class="layui-btn fa fa-pencil-square-o " id="insertButton"> add</button>
 					</div>
 					<div class="layui-inline">
-						<button class="layui-btn fa fa-save" id="toXlsButton"> 导出</button>
+						<button class="layui-btn fa fa-save" id="toXlsButton"> export</button>
 					</div>
 				</div>
 			</legend>
@@ -53,9 +53,9 @@
 			<table id="tableID"></table>
 		</div>
 		<script type="text/html" id="barAuth">
-			<a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="detail">查看</a>
-			<a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
-			<a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+			<a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="detail">view</a>
+			<a class="layui-btn layui-btn-xs" lay-event="edit">edit</a>
+			<a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">delete</a>
 		</script>
 		<script>
 			layui.use(['util', 'layer', 'table'], function() {
@@ -77,22 +77,22 @@
                                 width: 150
 							}, {
 								field: 'typeName',
-								title: '类型名称'
+								title: 'typeName'
 							}, {
 								field: 'price',
-								title: '价格'
+								title: 'price'
 							}, {
 								field: 'splicPrice',
-								title: '拼房价格'
+								title: 'splicPrice'
 							}, {
 								field: 'exceedance',
-								title: '可超预定数'
+								title: 'exceedance'
 							}, {
 								field: 'isSplice',
-								title: '是否可拼房'
+								title: 'isSplice'
 							}, {
 								field: 'right',
-								title: '管理',
+								title: 'right',
 								align: 'center',
 								toolbar: '#barAuth',
 								width: 200
@@ -120,18 +120,18 @@
 
 						if(layEvent === 'detail') {
 							layer.alert(
-								'ID：' + typeId + '<br>类型名称：' + typeName + '<br>价格：' + price +
-								'<br>拼房价格：' + splicPrice + '<br>可超预定数：' + exceedance + '<br>是否可拼房：' + isSplice, {
+								'ID：' + typeId + '<br>typeName：' + typeName + '<br>price：' + price +
+								'<br>splicPrice：' + splicPrice + '<br>exceedance：' + exceedance + '<br>isSplice：' + isSplice, {
 									skin: 'layui-layer-lan',
 									closeBtn: 0,
-									title: '您当前选择的房间类型信息',
+									title: 'room type info',
 									anim: 4,
 									offset: '180px'
 								});
 						} else if(layEvent === 'del') {
-							layer.confirm('您确定要删除该条数据吗？', {
+							layer.confirm('comfirm delete？', {
 								offset: '180px',
-								btn: ['是滴', '手滑']
+								btn: ['YES', 'NO']
 							}, function() {
 								table.reload('tableID', {
 									where: {
@@ -139,19 +139,19 @@
 										typeId: typeId
 									}
 								});
-								layer.msg('删除结果如下', {
+								layer.msg('comfirm result', {
 									offset: '250px',
 									icon: 1
 								});
 							}, function() {
-								layer.msg('删除操作已取消', {
+								layer.msg('delete cancel', {
 									offset: '250px'
 								});
 							});
 						} else if(layEvent === 'edit') {
 							//编辑
 							layer.prompt({
-								title: '请输入类型名称',
+								title: 'please input type name',
 								formType: 0,
 								value: typeName,
 								offset: '220px',
@@ -161,8 +161,8 @@
 								$.post(baseUrl + '/QueryRoomTypeNameServlet', params, function(data) {
 									if(data === "1" || data === "2") {
 										if(NewTypeName.length < 3)
-											layer.alert('长度不符合！', {
-												title: '警告',
+											layer.alert('illegal length！', {
+												title: 'warning',
 												icon: 4,
 												anim: 6,
 												offset: '220px'
@@ -170,46 +170,46 @@
 										else {
 											layer.close(index);
 											layer.prompt({
-												title: '请输入价格',
+												title: 'please input price',
 												formType: 0,
 												value: price,
 												offset: '220px',
 												maxlength: 10
 											}, function(NewPrice, index) {
 												if(isNaN(NewPrice)) {
-													layer.msg('您所输入的值类型不合法', {
+													layer.msg('illegal type input', {
 														offset: '250px'
 													});
 												} else {
 													layer.close(index);
 													layer.prompt({
-														title: '请输入拼房价格',
+														title: 'please input splice price',
 														formType: 0,
 														value: splicPrice,
 														offset: '220px',
 														maxlength: 10
 													}, function(NewSplicPrice, index) {
 														if(isNaN(NewSplicPrice)) {
-															layer.msg('您所输入的值类型不合法', {
+															layer.msg('illegal type input', {
 																offset: '250px'
 															});
 														} else {
 															layer.close(index);
 															layer.prompt({
-																title: '请输入可超预定数',
+																title: 'please input exceedance',
 																formType: 0,
 																value: exceedance,
 																offset: '220px',
 																maxlength: 10
 															}, function(NewExceedance, index) {
 																if(isNaN(NewExceedance)) {
-																	layer.msg('您所输入的值类型不合法', {
+																	layer.msg('illegal type input', {
 																		offset: '250px'
 																	});
 																} else {
 																	layer.close(index);
 																	layer.prompt({
-																		title: '是否可拼房（Y/N）',
+																		title: 'support splice（Y/N）',
 																		formType: 0,
 																		value: isSplice,
 																		offset: '220px',
@@ -229,7 +229,7 @@
 																			});
 																			layer.close(index);
 																		} else {
-																			layer.msg('您所输入的值类型不合法', {
+																			layer.msg('illegal type input', {
 																				offset: '260px'
 																			});
 																		}
@@ -242,8 +242,8 @@
 											});
 										}
 									} else {
-										layer.alert('已存在同名项！', {
-											title: '警告',
+										layer.alert('An item with the same name already exists！', {
+											title: 'warning',
 											icon: 4,
 											anim: 6,
 											offset: '220px'
@@ -258,15 +258,15 @@
 					$('#searchButton').click(function() {
 						var inputTxt = $('#inputSearch').val();
 						if(inputTxt === "")
-							layer.msg('您必须输入值', {
+							layer.msg('must input value', {
 								offset: '250px'
 							});
 						else if(inputTxt.length > 10)
-							layer.msg('您所输入的值长度不合法', {
+							layer.msg('illegal length', {
 								offset: '250px'
 							});
 						else {
-							layer.msg('搜索结果', {
+							layer.msg('search result', {
 								offset: '250px'
 							});
 							table.reload('tableID', {
@@ -296,8 +296,8 @@
 					//新增
 					$('#insertButton').click(function() {
 						layer.open({
-							title: "新增",
-							btn: ['关闭'],
+							title: "add",
+							btn: ['cancel'],
 							yes: function(index) {
 								tableIns.reload({
 									where: {
@@ -324,8 +324,8 @@
 					//导出
 					$('#toXlsButton').click(function() {
 						location.href = baseUrl + '/RoomInfoExcelServlet';
-						layer.alert('Excel文件生成完成！', {
-							title: '成功',
+						layer.alert('Excel file generation is complete！', {
+							title: 'success',
 							icon: 6,
 							anim: 1,
 							offset: '250px'

@@ -3,7 +3,7 @@
 
 	<head>
 		<meta charset="utf-8">
-		<title>酒店管理系统</title>
+		<title>Hotel Management System</title>
 
 	</head>
 

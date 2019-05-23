@@ -3,7 +3,7 @@
 
 	<head>
 		<meta charset="utf-8">
-		<title>酒店管理系统</title>
+		<title>Hotel Management System</title>
 		<link rel="stylesheet" href="../../js/layui/css/layui.css" media="all">
 		<link rel="stylesheet" href="../../MAIN/component/font-awesome-4.7.0/css/font-awesome.min.css">
 		<script src="../../js/layui/layui.js"></script>
@@ -30,18 +30,18 @@
 				<div>
 					<div class="layui-inline">
 						<div class="layui-input-inline">
-							<input class="layui-input" id="AuthITEM" placeholder="权限名称">
+							<input class="layui-input" id="AuthITEM" placeholder="Privilege name">
 						</div>
-						<button class="layui-btn fa fa-search" id="searchAuthITEM"> 搜索</button>
+						<button class="layui-btn fa fa-search" id="searchAuthITEM"> search</button>
 					</div>
 					<div class="layui-inline">
-						<button class="layui-btn fa fa-refresh" id="refresh"> 刷新</button>
+						<button class="layui-btn fa fa-refresh" id="refresh"> refresh</button>
 					</div>
 					<div class="layui-inline">
-						<button class="layui-btn fa fa-pencil-square-o " id="insertAuth"> 新增</button>
+						<button class="layui-btn fa fa-pencil-square-o " id="insertAuth"> add</button>
 					</div>
 					<div class="layui-inline">
-						<button class="layui-btn fa fa-save" id="toXls"> 导出</button>
+						<button class="layui-btn fa fa-save" id="toXls"> export</button>
 					</div>
 				</div>
 			</legend>
@@ -51,9 +51,9 @@
 			<table id="tableAuth"></table>
 		</div>
 		<script type="text/html" id="barAuth">
-			<a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="detail">查看</a>
-			<a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
-			<a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+			<a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="detail">view</a>
+			<a class="layui-btn layui-btn-xs" lay-event="edit">edit</a>
+			<a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">delete</a>
 		</script>
 		<script>
 			/**
@@ -86,22 +86,22 @@
 									fixed: true
 								}, {
 									field: 'authItem',
-									title: '权限名称'
+									title: 'Privilege name'
 								}, {
 									field: 'isRead',
-									title: '可读'
+									title: 'readable'
 								}, {
 									field: 'isWrite',
-									title: '可写'
+									title: 'Writable'
 								}, {
 									field: 'isChange',
-									title: '可改'
+									title: 'editable'
 								}, {
 									field: 'isDelete',
-									title: '可删'
+									title: 'deletable'
 								}, {
 									field: 'right',
-									title: '管理',
+									title: 'admin',
 									align: 'center',
 									toolbar: '#barAuth',
 									width: 200
@@ -132,18 +132,18 @@
 						var isDelete = data.isDelete;
 
 						if(layEvent === 'detail') { //查看功能
-							layer.alert('权限项：' + data.authItem + '<br>最低可读权限等级：' + data.isRead + '<br>最低可写权限等级：' +
-								data.isWrite + '<br>最低可改权限等级：' + data.isChange + '<br>最低可删权限等级：' + data.isDelete, {
+							layer.alert('Permission item：' + data.authItem + '<br>Minimum readable authority level：' + data.isRead + '<br>Minimum writable permission level：' +
+								data.isWrite + '<br>Minimum changeable permission level：' + data.isChange + '<br>Minimum deletable permission level：' + data.isDelete, {
 									skin: 'layui-layer-lan',
 									closeBtn: 0,
-									title: '您当前选择的权限值信息',
+									title: 'The permission value information you currently select',
 									anim: 4,
 									offset: '180px'
 								});
 
 						} else if(layEvent === 'del') { //删除功能
-							layer.alert('本条目禁止删除！', {
-								title: '警告',
+							layer.alert('This entry is forbidden to delete！', {
+								title: 'warning',
 								icon: 4,
 								anim: 6,
 								offset: '250px'
@@ -153,7 +153,7 @@
 							//layer.prompt(options, yes) - 输入层
 							//formType:输入框类型，支持0（文本）默认1（密码）2（多行文本） maxlength: 140, //可输入文本的最大长度，默认500
 							layer.prompt({
-								title: '请输入最低可读权限等级',
+								title: 'Please enter the minimum readable privilege level',
 								formType: 0,
 								value: isRead,
 								offset: '220px',
@@ -161,7 +161,7 @@
 							}, function(IsRead, index) {
 								layer.close(index);
 								layer.prompt({
-									title: '请输入最低可写权限等级',
+									title: 'Please enter the minimum writable permission level',
 									formType: 0,
 									value: isWrite,
 									offset: '220px',
@@ -169,7 +169,7 @@
 								}, function(IsWrite, index) {
 									layer.close(index);
 									layer.prompt({
-										title: '请输入最低可改权限等级',
+										title: 'Please enter the minimum privilege level',
 										formType: 0,
 										value: isChange,
 										offset: '220px',
@@ -177,7 +177,7 @@
 									}, function(IsChange, index) {
 										layer.close(index);
 										layer.prompt({
-											title: '请输入最低可改权限等级',
+											title: 'Please enter the minimum privilege level',
 											formType: 0,
 											value: isDelete,
 											offset: '220px',
@@ -186,7 +186,7 @@
 											layer.close(index);
 											//isNaN() 函数用于检查其参数是否是非数字值,如果是数字返回true
 											if(isNaN(IsRead) || isNaN(IsWrite) || isNaN(IsChange) || isNaN(IsDelete)) {
-												layer.msg('您所输入的值类型不合法', {
+												layer.msg('Value type is illegal', {
 													offset: '250px'
 												});
 											} else { //传数据
@@ -201,7 +201,7 @@
 														isDelete: IsDelete
 													}
 												});
-												layer.msg('修改成功', {
+												layer.msg('success', {
 													offset: '250px'
 												});
 											}
@@ -224,8 +224,8 @@
 
 					//新增
 					$('#insertAuth').click(function() {
-						layer.alert('本条目禁止新增！', {
-							title: '警告',
+						layer.alert('This entry is forbidden to add！', {
+							title: 'warning',
 							icon: 4,
 							anim: 6,
 							offset: '250px'
@@ -236,15 +236,15 @@
 					$('#searchAuthITEM').click(function() {
 						var authItem = $('#AuthITEM').val();
 						if(authItem === "")
-							layer.msg('您必须输入值', {
+							layer.msg('must input', {
 								offset: '250px'
 							});
 						else if(authItem.length > 10)
-							layer.msg('您所输入的值长度不合法', {
+							layer.msg('illegal length', {
 								offset: '250px'
 							});
 						else {
-							layer.msg('搜索结果', {
+							layer.msg('search result', {
 								offset: '250px'
 							});
 							//与tableIns.reload方法类似，这种方法是取表格容器索引值
@@ -261,8 +261,8 @@
 					//导出
 					$('#toXls').click(function() {
 						location.href = baseUrl + '/AuthInfoExcelServlet';
-						layer.alert('Excel文件生成完成！', {
-							title: '成功',
+						layer.alert('Excel file generation is complete！', {
+							title: 'success',
 							icon: 6,
 							anim: 1,
 							offset: '250px'

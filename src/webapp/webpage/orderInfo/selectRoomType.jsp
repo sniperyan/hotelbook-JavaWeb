@@ -25,20 +25,20 @@
 		<table id="dataTable" class='layui-table'>
 			<tr>
 				<th>ID</th>
-				<th>类型名称</th>
-				<th>价格</th>
-				<th>拼房价格</th>
-				<th>可超预定数</th>
-				<th>是否可拼房</th>
+				<th>type name</th>
+				<th>price</th>
+				<th>House price</th>
+				<th>Can exceed the predetermined number</th>
+				<th>Can you live together</th>
 			</tr>
 		</table>
 		<div class="fixDiv">
-			<label class="layui-form-label">当前选中：</label>
+			<label class="layui-form-label">Currently selected：</label>
 			<div class="layui-input-inline">
 				<input type="text" id="tId" class="layui-input" placeholder="ID" readonly>
 			</div>
 			<div class="layui-input-inline">
-				<input type="text" id="tPrice" class="layui-input" placeholder="价格" readonly>
+				<input type="text" id="tPrice" class="layui-input" placeholder="price" readonly>
 			</div>
 		</div>
 

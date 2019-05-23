@@ -3,7 +3,7 @@
 
 	<head>
 		<meta charset="utf-8">
-		<title>酒店管理系统</title>
+		<title>Hotel Management System</title>
 		<link rel="stylesheet Icon" type=" image/x-icon" href="img/windows.ico">
 		<link rel="stylesheet" type="text/css" href="css/login/register-login.css">
 		<script src="./js/global.js"></script>
@@ -18,7 +18,7 @@
 			<!--标题-->
 			<div class="cent-box-header">
 				<h1 class="main-title">HotelBook</h1>
-				<h2 class="sub-title">酒店管理系统</h2>
+				<h2 class="sub-title">Hotel Management System</h2>
 			</div>
 
 			<div class="cont-main clearfix">
@@ -29,26 +29,26 @@
 					<div class="group">
 						<!--用户名输入框-->
 						<div class="group-ipt loginName">
-							<input type="text" name="loginName" id="loginName" class="ipt" placeholder="输入您的用户名" required>
+							<input type="text" name="loginName" id="loginName" class="ipt" placeholder="username" required>
 						</div>
 						<!--密码输入框-->
 						<div class="group-ipt loginPwd">
-							<input type="password" name="loginPwd" id="loginPwd" class="ipt" placeholder="输入您的登录密码" required>
+							<input type="password" name="loginPwd" id="loginPwd" class="ipt" placeholder="password" required>
 						</div>
 					</div>
 					<!--登录按钮-->
 					<div class="button" id="btnLogin">
-						<button type="submit" class="login-btn register-btn button" id="embed-submit">登录</button>
+						<button type="submit" class="login-btn register-btn button" id="embed-submit">login</button>
 					</div>
 				</div>
 				<!--登录区域结束-->
 				<!--尾注-->
 				<div class="remember clearfix">
 					<label class="remember-me">
-                <a href="#">获取帮助</a>
+                <a href="#">help</a>
             </label>
 					<label class="forgot-password">
-                <a href="#">忘记密码？</a>
+                <a href="#">forget password？</a>
             </label>
 				</div>
 			</div>
@@ -86,22 +86,22 @@
 						var params = "loginName=" + loginName + "&loginPwd=" + loginPwd;
 
 						if(loginName === "")
-							layer.tips("请输入用户名", "#loginName"); //layer.tips(“string","#吸附容器")
+							layer.tips("please input username", "#loginName"); //layer.tips(“string","#吸附容器")
 						else if(loginPwd === "")
-							layer.tips("请输入密码", "#loginPwd");
+							layer.tips("please input password", "#loginPwd");
 						else {
 							//发出ajax请求，调用后端功能
 							$.post(baseUrl + '/QueryLoginNameServlet', params, function(data) {
 								if(data === '-1')
-									layer.msg("用户名不存在", {
+									layer.msg("username not found", {
 										anim: 6
 									});
 								else if(data === '0')
-									layer.msg("密码不正确", {
+									layer.msg("incorrect password", {
 										anim: 6
 									});
 								else {
-									layer.msg('登录成功', {
+									layer.msg('login success', {
 										icon: 16,
 										shade: 0.01
 									});
@@ -110,7 +110,7 @@
 									$.post(baseUrl + '/QueryLoginInfoServlet', function(loginInfo) {
 
 										//数据返回样例
-										<%--{"loginId":1,"loginName":"root","loginPwd":"toor","loginNickName":"管理员","loginAdmin":0}--%>
+										<%--{"loginId":1,"loginName":"root","loginPwd":"toor","loginNickName":"administrator","loginAdmin":0}--%>
 
 										//取值方法
 										var obj = JSON.parse(loginInfo);

@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>注册账户</title>
+    <title>create account</title>
     <link rel="stylesheet" href="./js/layui/css/layui.css" media="all">
     <script src="./js/layui/layui.js"></script>
     <script src="./js/jquery.js"></script>
@@ -12,49 +12,49 @@
 
 <body>
 <fieldset class="layui-elem-field layui-field-title" style="margin-top: 10px;">
-    <legend>注册用户</legend>
+    <legend>create account</legend>
 </fieldset>
 <form class="layui-form" action="">
     <div class="layui-form-item">
         <div class="layui-inline">
-            <label class="layui-form-label">账户名</label>
+            <label class="layui-form-label">username</label>
             <div class="layui-input-inline">
                 <input type="text" name="loginName" lay-verify="required|inputName" autocomplete="off"
-                       placeholder="您登录所需的账户" class="layui-input">
+                       placeholder="username" class="layui-input">
             </div>
         </div>
     </div>
     <div class="layui-form-item">
         <div class="layui-inline">
-            <label class="layui-form-label">密码</label>
+            <label class="layui-form-label">password</label>
             <div class="layui-input-inline">
                 <input type="password" name="loginPwd" id="pwd1" lay-verify="required|inputPwd" autocomplete="off"
-                       placeholder="您登录所需的密码" class="layui-input">
+                       placeholder="password" class="layui-input">
             </div>
         </div>
     </div>
     <div class="layui-form-item">
         <div class="layui-inline">
-            <label class="layui-form-label">确认密码</label>
+            <label class="layui-form-label">confirm password</label>
             <div class="layui-input-inline">
                 <input type="password"  id="pwd2" lay-verify="required|inputPwd" autocomplete="off"
-                       placeholder="重复你所输入的密码" class="layui-input">
+                       placeholder="confirm password" class="layui-input">
             </div>
         </div>
     </div>
     <div class="layui-form-item">
         <div class="layui-inline">
-            <label class="layui-form-label">昵称</label>
+            <label class="layui-form-label">nickname</label>
             <div class="layui-input-inline">
                 <input type="text" name="loginNickName" lay-verify="required|inputName" autocomplete="off"
-                       placeholder="您的个性昵称" class="layui-input">
+                       placeholder="nickname" class="layui-input">
             </div>
         </div>
     </div>
     <div class="layui-form-item">
         <div class="layui-input-block">
-            <button class="layui-btn" lay-submit lay-filter="insertRome">注册</button>
-            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+            <button class="layui-btn" lay-submit lay-filter="insertRome">submit</button>
+            <button type="reset" class="layui-btn layui-btn-primary">reset</button>
         </div>
     </div>
 </form>
@@ -68,20 +68,20 @@
         form.verify({
             inputName: function (value) {
                 if (value.length < 4) {
-                    return '账户至少4个字符';
+                    return 'must more than 4 characters';
                 }
 
                 if (value.length > 10) {
-                    return '账户至多10个字符'
+                    return 'must less than 4 characters'
                 }
             },
             inputPwd: function (value) {
                 if (value.length < 4) {
-                    return '密码至少4个字符';
+                    return 'must more than 4 characters';
                 }
 
                 if (value.length > 18) {
-                    return '密码至多18个字符'
+                    return 'must less than 18 characters'
                 }
             }
         });
@@ -93,19 +93,19 @@
             var pwd2 = $("#pwd2").val();
 
             if (pwd1 != pwd2) {
-                layer.msg("二次密码验证不一致");
+                layer.msg("Inconsistent password");
             } else {
 
                 $.post(baseUrl + '/InsertLoginServlet', JSON.stringify(data.field), function (code) {
                     if (code === 1) {
-                        layer.alert('注册成功！', {
-                            title: '成功',
+                        layer.alert('create success！', {
+                            title: 'success！',
                             icon: 6,
                             anim: 5
                         });
                     } else {
-                        layer.alert('注册失败！', {
-                            title: '异常',
+                        layer.alert('create failed', {
+                            title: 'error',
                             icon: 5,
                             anim: 6
                         });

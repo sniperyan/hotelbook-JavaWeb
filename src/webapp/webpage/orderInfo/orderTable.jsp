@@ -3,7 +3,7 @@
 
 	<head>
 		<meta charset="utf-8">
-		<title>酒店管理系统</title>
+		<title>Hotel Management System</title>
 		<link rel="stylesheet" href="../../js/layui/css/layui.css" media="all">
 		<link rel="stylesheet" href="../../MAIN/component/font-awesome-4.7.0/css/font-awesome.min.css">
 		<script src="../../js/layui/layui.js"></script>
@@ -31,23 +31,23 @@
 				<div>
 					<div class="layui-inline">
 						<div class="layui-input-inline">
-							<input class="layui-input" id="inputSearch1" placeholder="预定人">
+							<input class="layui-input" id="inputSearch1" placeholder="Scheduler">
 						</div>
-						<button class="layui-btn fa fa-search layui-btn-normal" id="searchButton1"> 搜索</button>
+						<button class="layui-btn fa fa-search layui-btn-normal" id="searchButton1"> search</button>
 					</div>
 
 					<div class="layui-inline">
 						<div class="layui-input-inline">
-							<input class="layui-input" id="inputSearch2" placeholder="房间类型">
+							<input class="layui-input" id="inputSearch2" placeholder="room type">
 						</div>
-						<button class="layui-btn fa fa-search layui-btn-normal" id="searchButton2"> 搜索</button>
+						<button class="layui-btn fa fa-search layui-btn-normal" id="searchButton2"> search</button>
 					</div>
 
 					<div class="layui-inline">
-						<button class="layui-btn fa fa-refresh layui-btn-normal" id="refreshButton"> 刷新</button>
+						<button class="layui-btn fa fa-refresh layui-btn-normal" id="refreshButton"> refresh</button>
 					</div>
 					<div class="layui-inline">
-						<button class="layui-btn fa fa-save layui-btn-normal" id="toXlsButton"> 导出</button>
+						<button class="layui-btn fa fa-save layui-btn-normal" id="toXlsButton"> export</button>
 					</div>
 				</div>
 			</legend>
@@ -56,8 +56,8 @@
 			<table id="tableID"></table>
 		</div>
 		<script type="text/html" id="barAuth">
-			<a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
-			<a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+			<a class="layui-btn layui-btn-xs" lay-event="edit">edit</a>
+			<a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">delete</a>
 		</script>
 		<script>
 			layui.use(['util', 'layer', 'table'], function() {
@@ -73,86 +73,86 @@
 						cols: [
 							[{
 								field: 'orderId',
-								title: '预定单号',
+								title: 'orderId',
 								width: 180,
 								sort: true,
 								fixed: true
 							}, {
 								field: 'orderName',
-								title: '预定人',
+								title: 'orderName',
 								sort: true,
 								width: 180
 							}, {
 								field: 'orderPhone',
-								title: '预定电话',
+								title: 'orderPhone',
 								width: 180
 							}, {
 								field: 'orderIDcard',
-								title: '身份证',
+								title: 'orderIDcard',
 								width: 200
 							}, {
 								field: 'arrireDate',
-								title: '抵店时间',
+								title: 'arrireDate',
 								width: 180
 							}, {
 								field: 'leaveDate',
-								title: '离店时间',
+								title: 'leaveDate',
 								width: 180
 							}, {
 								field: 'typeId',
-								title: '房间类型',
+								title: 'typeId',
 								sort: true,
 								width: 180
 							}, {
 								field: 'checkNum',
-								title: '入住人数',
+								title: 'checkNum',
 								width: 100
 							}, {
 								field: 'price',
-								title: '客房价格',
+								title: 'price',
 								width: 100
 							}, {
 								field: 'checkPrice',
-								title: '入住价格',
+								title: 'checkPrice',
 								width: 100
 							}, {
 								field: 'discount',
-								title: '折扣',
+								title: 'discount',
 								width: 100
 							}, {
 								field: 'discountReason',
-								title: '折扣原因',
+								title: 'discountReason',
 								width: 180
 							}, {
 								field: 'addBed',
-								title: '是否加床',
+								title: 'addBed',
 								sort: true,
 								width: 100
 							}, {
 								field: 'addBedPrice',
-								title: '加床价格',
+								title: 'addBedPrice',
 								width: 100
 							}, {
 								field: 'orderMoney',
-								title: '预收款',
+								title: 'orderMoney',
 								width: 100
 							}, {
 								field: 'orderState',
-								title: '单据状态',
+								title: 'orderState',
 								sort: true,
 								width: 100
 							}, {
 								field: 'remark',
-								title: '备注',
+								title: 'remark',
 								width: 400
 							}, {
 								field: 'operatorId',
-								title: '操作员',
+								title: 'operatorId',
 								sort: true,
 								width: 100
 							}, {
 								field: 'right',
-								title: '管理',
+								title: 'right',
 								align: 'center',
 								toolbar: '#barAuth',
 								width: 150,
@@ -175,9 +175,9 @@
 						var orderId = data.orderId;
 
 						if(layEvent === 'del') {
-							layer.confirm('您确定要删除该条数据吗？', {
+							layer.confirm('Are you sure you want to delete this data?', {
 								offset: '180px',
-								btn: ['是滴', '手滑']
+								btn: ['YES', 'NO']
 							}, function() {
 								table.reload('tableID', {
 									where: {
@@ -185,7 +185,7 @@
 										orderId: orderId
 									}
 								});
-								layer.msg('删除结果如下', {
+								layer.msg('Delete the result as follows', {
 									offset: '250px',
 									icon: 1
 								});
@@ -196,7 +196,7 @@
                                     }
                                 });
 							}, function() {
-								layer.msg('删除操作已取消', {
+								layer.msg('Delete operation canceled', {
 									offset: '250px'
 								});
 							});
@@ -208,8 +208,8 @@
 
 							//编辑
 							layer.open({
-								title: "提交",
-								btn: ['关闭'],
+								title: "submit",
+								btn: ['cancel'],
 								yes: function(index) {
 									tableIns.reload({
 										where: {
@@ -271,8 +271,8 @@
 					//导出
 					$('#toXlsButton').click(function() {
 						location.href = baseUrl + '/OrderInfoExcelServlet';
-						layer.alert('Excel文件生成完成！', {
-							title: '成功',
+						layer.alert('Excel file generation is complete！', {
+							title: 'success',
 							icon: 6,
 							anim: 1,
 							offset: '250px'

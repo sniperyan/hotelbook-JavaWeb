@@ -4,7 +4,7 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-		<title>酒店管理系统</title>
+		<title>Hotel Management System</title>
 		<link rel="stylesheet" href="../../js/layui/css/layui.css" media="all">
 		<link rel="stylesheet" href="../../MAIN/component/font-awesome-4.7.0/css/font-awesome.min.css">
 		<script src="../../js/toExcel/xlsx.full.min.js"></script>
@@ -17,24 +17,25 @@
 			<div class="layui-side-scroll">
 				<ul class="layui-nav layui-nav-tree">
 					<li class="layui-nav-item layui-nav-itemed">
-						<a>基础功能设置</a>
+						<a>Basic function settings</a>
 						<dl class="layui-nav-child">
 							<dd>
-								<a href="RoomTypeTable.jsp" target="system">房间类型</a>
+								<a href="RoomTypeTable.jsp" target="system">room type</a>
 							</dd>
 							<dd>
-								<a href="FloorTable.jsp" target="system">楼层信息</a>
+								<a href="FloorTable.jsp" target="system">floor info</a>
 							</dd>
 						</dl>
 					</li>
 					<li class="layui-nav-item">
-						<a>附属功能设置</a>
+						<a>
+							Auxiliary function setting</a>
 						<dl class="layui-nav-child">
 							<dd>
-                                <a href="LogTable.jsp" target="system">日志管理</a>
+                                <a href="LogTable.jsp" target="system">log management</a>
 							</dd>
                             <dd>
-                                <a href="AuthTable.jsp" target="system">权限管理</a>
+                                <a href="AuthTable.jsp" target="system">authority management</a>
                             </dd>
 						</dl>
 					</li>
