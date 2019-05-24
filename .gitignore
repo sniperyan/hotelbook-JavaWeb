@@ -1,5 +1,6 @@
 # IDEA配置文件
 .idea/workspace.xml
+.idea
 
 # Hbuild项目
 src/webapp/*.project
